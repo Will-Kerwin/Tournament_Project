@@ -16,5 +16,39 @@ namespace TrackerUI
         {
             InitializeComponent();
         }
+
+        private void BTNCreatePrize_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private bool ValidateForm()
+        {
+            bool output = true;
+            int placeNumber = 0;
+            // out does oposite of paramater passes things out which arent the return 
+            bool placeNumberValidNumber = int.TryParse(PlaceNumberValue.Text, out placeNumber);
+
+            if(placeNumberValidNumber)
+            {
+                output = false;
+            }
+            if (placeNumber < 1)
+            {
+                output = false;
+            }
+
+            if (PlaceNameValue.Text.Length == 0)
+            {
+                output = false;
+            }
+
+            if ()
+            {
+
+            }
+
+            return output;
+        }
     }
 }

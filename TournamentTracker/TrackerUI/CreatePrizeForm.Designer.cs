@@ -149,6 +149,7 @@
             this.BTNCreatePrize.TabIndex = 40;
             this.BTNCreatePrize.Text = "Create Prize";
             this.BTNCreatePrize.UseVisualStyleBackColor = true;
+            this.BTNCreatePrize.Click += new System.EventHandler(this.BTNCreatePrize_Click);
             // 
             // CreatePrizeForm
             // 
