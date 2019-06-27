@@ -21,7 +21,7 @@ namespace TrackerUI
             TrackerLibrary.GlobalConfig.InitializeConnections(true, true);
             Application.Run(new CreatePrizeForm());
 
-
+            // test local move
             // \/  run this doing the test bit
             //Application.Run(new TournamentDashboardForm());
         }
