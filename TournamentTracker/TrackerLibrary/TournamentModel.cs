@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace TrackerLibrary
 {
@@ -11,7 +7,7 @@ namespace TrackerLibrary
         /// <summary>
         /// Tournament name.
         /// </summary>
-        public string TournamentName{ get; set; }
+        public string TournamentName { get; set; }
         /// <summary>
         /// Price Of entry
         /// </summary>
@@ -23,7 +19,7 @@ namespace TrackerLibrary
         /// <summary>
         /// The Prizez
         /// </summary>
-        public List<PrizeModel> Prizes { get; set; } = new List<PrizeModel> ();
+        public List<PrizeModel> Prizes { get; set; } = new List<PrizeModel>();
         public List<List<MatchupModel>> Rounds { get; set; } = new List<List<MatchupModel>>();
     }
 }

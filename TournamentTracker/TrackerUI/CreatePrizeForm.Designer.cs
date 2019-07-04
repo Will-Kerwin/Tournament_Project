@@ -94,6 +94,7 @@
             this.PrizeAmountValue.Name = "PrizeAmountValue";
             this.PrizeAmountValue.Size = new System.Drawing.Size(204, 35);
             this.PrizeAmountValue.TabIndex = 32;
+            this.PrizeAmountValue.Text = "0";
             // 
             // LBLPrizeAmount
             // 
@@ -112,6 +113,7 @@
             this.PrizePercentageValue.Name = "PrizePercentageValue";
             this.PrizePercentageValue.Size = new System.Drawing.Size(204, 35);
             this.PrizePercentageValue.TabIndex = 34;
+            this.PrizePercentageValue.Text = "0";
             // 
             // LBLPrizePercentage
             // 
