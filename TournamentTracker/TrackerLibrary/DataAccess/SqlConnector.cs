@@ -1,5 +1,14 @@
-﻿using TrackerLibrary.Models;
+﻿using Dapper;
+using System.Data;
+using TrackerLibrary.Models;
 
+/*
+ * @PlaceNumber int,
+@PlaceName nvarchar(50),
+@PrizeAmount money,
+@PrizePercentage float,
+@id int = 0 output
+*/
 namespace TrackerLibrary.DataAccess
 {
     public class SqlConnector : IDataConnection
@@ -14,9 +23,24 @@ namespace TrackerLibrary.DataAccess
         /// <returns>the prize information, including the unique identifier</returns>
         public PrizeModel CreatePrize(PrizeModel model)
         {
-            model.Id = 1;
+            // planning is key causes less hassle in the long term plan even when code is written 
+            // using says that they want to wrap so when we hit the } it gets distroyed this is to prevent memory leaks 
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString("Tournaments")))
+            {
+                var dp = new DynamicParameters();
 
-            return model;
+                dp.Add("@PlaceNumber", model.PlaceNumber);
+                dp.Add("@PlaceName", model.PlaceName);
+                dp.Add("@PrizeAmount", model.PrizeAmount);
+                dp.Add("@PrizePercentage", model.PrizePercentage);
+                dp.Add("@id", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
+
+                connection.Execute("dbo.spPrizes_Insert", dp, commandType: CommandType.StoredProcedure);
+
+                model.Id = dp.Get<int>("@id");
+                // TODO - what happens if things go wrong?
+                return model;
+            }
         }
     }
 }
