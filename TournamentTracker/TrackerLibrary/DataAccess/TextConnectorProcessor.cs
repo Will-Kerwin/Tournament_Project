@@ -78,6 +78,35 @@ namespace TrackerLibrary.DataAccess.TextHelpers
             return output;
         }
 
+        /// <summary>
+        /// Converts list of strings to person model
+        /// </summary>
+        /// <param name="lines">list of strings from load file</param>
+        /// <returns>Person Model</returns>
+        public static List<PersonModel> ConvertToPersonModels(this List<string> lines)
+        {
+            // Comments are same as prize model look to there for same thing i feel like this is code duplication but oh well
+            // TODO - look into library called auto mapper which should fix comment above
+            List<PersonModel> output = new List<PersonModel>();
+
+            foreach (string line in lines)
+            {
+                string[] cols = line.Split(',');
+
+                PersonModel pm = new PersonModel();
+
+                pm.Id = int.Parse(cols[0]);
+                pm.FirstName = cols[1];
+                pm.LastName = cols[2];
+                pm.EmailAddress = cols[3];
+                pm.MobilePhoneNumber = cols[4];
+
+                output.Add(pm);
+            }
+
+            return output;
+        }
+
         public static void SaveToPrizeFile(this List<PrizeModel> models, string fileName)
         {
             List<string> lines = new List<string>();
@@ -85,6 +114,18 @@ namespace TrackerLibrary.DataAccess.TextHelpers
             foreach (PrizeModel prizeModel in models)
             {
                 lines.Add($"{ prizeModel.Id },{ prizeModel.PlaceNumber },{ prizeModel.PlaceName },{ prizeModel.PrizeAmount },{ prizeModel.PrizePercentage }");
+            }
+
+            File.WriteAllLines(fileName.FullFilePath(), lines);
+        }
+
+        public static void SaveToPersonFile(this List<PersonModel> models, string fileName)
+        {
+            List<string> lines = new List<string>();
+
+            foreach (PersonModel person in models)
+            {
+                lines.Add($"{person.Id},{person.FirstName},{person.LastName},{person.EmailAddress},{person.MobilePhoneNumber}");
             }
 
             File.WriteAllLines(fileName.FullFilePath(), lines);

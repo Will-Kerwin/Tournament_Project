@@ -35,15 +35,15 @@
             this.SelectTeamMemberDropDown = new System.Windows.Forms.ComboBox();
             this.LBLSelectTeamMember = new System.Windows.Forms.Label();
             this.AddNewMemberGroupBox = new System.Windows.Forms.GroupBox();
-            this.FirstNameValue = new System.Windows.Forms.TextBox();
-            this.LBLFirstName = new System.Windows.Forms.Label();
-            this.LastNameValue = new System.Windows.Forms.TextBox();
-            this.LBLLastName = new System.Windows.Forms.Label();
-            this.EmailValue = new System.Windows.Forms.TextBox();
-            this.LBLEmail = new System.Windows.Forms.Label();
+            this.BTNCreateMember = new System.Windows.Forms.Button();
             this.MobileValue = new System.Windows.Forms.TextBox();
             this.LBLMobile = new System.Windows.Forms.Label();
-            this.BTNCreateMember = new System.Windows.Forms.Button();
+            this.EmailValue = new System.Windows.Forms.TextBox();
+            this.LBLEmail = new System.Windows.Forms.Label();
+            this.LastNameValue = new System.Windows.Forms.TextBox();
+            this.LBLLastName = new System.Windows.Forms.Label();
+            this.FirstNameValue = new System.Windows.Forms.TextBox();
+            this.LBLFirstName = new System.Windows.Forms.Label();
             this.TeamMembersListBox = new System.Windows.Forms.ListBox();
             this.BTNDeleteSelectedMember = new System.Windows.Forms.Button();
             this.BTNCreateTeam = new System.Windows.Forms.Button();
@@ -56,7 +56,6 @@
             this.TeamNameValue.Name = "TeamNameValue";
             this.TeamNameValue.Size = new System.Drawing.Size(346, 35);
             this.TeamNameValue.TabIndex = 27;
-            this.TeamNameValue.TextChanged += new System.EventHandler(this.TournamentNameValue_TextChanged);
             // 
             // LBLTeamName
             // 
@@ -68,7 +67,6 @@
             this.LBLTeamName.Size = new System.Drawing.Size(157, 37);
             this.LBLTeamName.TabIndex = 26;
             this.LBLTeamName.Text = "Team Name";
-            this.LBLTeamName.Click += new System.EventHandler(this.LBLTournamentName_Click);
             // 
             // LBLHeader
             // 
@@ -80,7 +78,6 @@
             this.LBLHeader.Size = new System.Drawing.Size(213, 50);
             this.LBLHeader.TabIndex = 25;
             this.LBLHeader.Text = "Create Team";
-            this.LBLHeader.Click += new System.EventHandler(this.LBLHeader_Click);
             // 
             // BTNAddTeamMember
             // 
@@ -135,59 +132,21 @@
             this.AddNewMemberGroupBox.TabStop = false;
             this.AddNewMemberGroupBox.Text = "Add New Member";
             // 
-            // FirstNameValue
+            // BTNCreateMember
             // 
-            this.FirstNameValue.Location = new System.Drawing.Point(156, 34);
-            this.FirstNameValue.Name = "FirstNameValue";
-            this.FirstNameValue.Size = new System.Drawing.Size(204, 35);
-            this.FirstNameValue.TabIndex = 24;
-            // 
-            // LBLFirstName
-            // 
-            this.LBLFirstName.AutoSize = true;
-            this.LBLFirstName.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LBLFirstName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
-            this.LBLFirstName.Location = new System.Drawing.Point(6, 31);
-            this.LBLFirstName.Name = "LBLFirstName";
-            this.LBLFirstName.Size = new System.Drawing.Size(144, 37);
-            this.LBLFirstName.TabIndex = 23;
-            this.LBLFirstName.Text = "First Name";
-            // 
-            // LastNameValue
-            // 
-            this.LastNameValue.Location = new System.Drawing.Point(156, 81);
-            this.LastNameValue.Name = "LastNameValue";
-            this.LastNameValue.Size = new System.Drawing.Size(204, 35);
-            this.LastNameValue.TabIndex = 26;
-            // 
-            // LBLLastName
-            // 
-            this.LBLLastName.AutoSize = true;
-            this.LBLLastName.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LBLLastName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
-            this.LBLLastName.Location = new System.Drawing.Point(6, 78);
-            this.LBLLastName.Name = "LBLLastName";
-            this.LBLLastName.Size = new System.Drawing.Size(142, 37);
-            this.LBLLastName.TabIndex = 25;
-            this.LBLLastName.Text = "Last Name";
-            // 
-            // EmailValue
-            // 
-            this.EmailValue.Location = new System.Drawing.Point(156, 129);
-            this.EmailValue.Name = "EmailValue";
-            this.EmailValue.Size = new System.Drawing.Size(204, 35);
-            this.EmailValue.TabIndex = 28;
-            // 
-            // LBLEmail
-            // 
-            this.LBLEmail.AutoSize = true;
-            this.LBLEmail.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LBLEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
-            this.LBLEmail.Location = new System.Drawing.Point(6, 126);
-            this.LBLEmail.Name = "LBLEmail";
-            this.LBLEmail.Size = new System.Drawing.Size(82, 37);
-            this.LBLEmail.TabIndex = 27;
-            this.LBLEmail.Text = "Email";
+            this.BTNCreateMember.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.BTNCreateMember.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.BTNCreateMember.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.BTNCreateMember.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BTNCreateMember.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BTNCreateMember.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
+            this.BTNCreateMember.Location = new System.Drawing.Point(97, 219);
+            this.BTNCreateMember.Name = "BTNCreateMember";
+            this.BTNCreateMember.Size = new System.Drawing.Size(182, 42);
+            this.BTNCreateMember.TabIndex = 34;
+            this.BTNCreateMember.Text = "Create Member";
+            this.BTNCreateMember.UseVisualStyleBackColor = true;
+            this.BTNCreateMember.Click += new System.EventHandler(this.BTNCreateMember_Click);
             // 
             // MobileValue
             // 
@@ -207,20 +166,59 @@
             this.LBLMobile.TabIndex = 29;
             this.LBLMobile.Text = "Mobile";
             // 
-            // BTNCreateMember
+            // EmailValue
             // 
-            this.BTNCreateMember.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
-            this.BTNCreateMember.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            this.BTNCreateMember.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.BTNCreateMember.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BTNCreateMember.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BTNCreateMember.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
-            this.BTNCreateMember.Location = new System.Drawing.Point(97, 219);
-            this.BTNCreateMember.Name = "BTNCreateMember";
-            this.BTNCreateMember.Size = new System.Drawing.Size(182, 42);
-            this.BTNCreateMember.TabIndex = 34;
-            this.BTNCreateMember.Text = "Create Member";
-            this.BTNCreateMember.UseVisualStyleBackColor = true;
+            this.EmailValue.Location = new System.Drawing.Point(156, 129);
+            this.EmailValue.Name = "EmailValue";
+            this.EmailValue.Size = new System.Drawing.Size(204, 35);
+            this.EmailValue.TabIndex = 28;
+            // 
+            // LBLEmail
+            // 
+            this.LBLEmail.AutoSize = true;
+            this.LBLEmail.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LBLEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
+            this.LBLEmail.Location = new System.Drawing.Point(6, 126);
+            this.LBLEmail.Name = "LBLEmail";
+            this.LBLEmail.Size = new System.Drawing.Size(82, 37);
+            this.LBLEmail.TabIndex = 27;
+            this.LBLEmail.Text = "Email";
+            // 
+            // LastNameValue
+            // 
+            this.LastNameValue.Location = new System.Drawing.Point(156, 81);
+            this.LastNameValue.Name = "LastNameValue";
+            this.LastNameValue.Size = new System.Drawing.Size(204, 35);
+            this.LastNameValue.TabIndex = 26;
+            // 
+            // LBLLastName
+            // 
+            this.LBLLastName.AutoSize = true;
+            this.LBLLastName.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LBLLastName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
+            this.LBLLastName.Location = new System.Drawing.Point(6, 78);
+            this.LBLLastName.Name = "LBLLastName";
+            this.LBLLastName.Size = new System.Drawing.Size(142, 37);
+            this.LBLLastName.TabIndex = 25;
+            this.LBLLastName.Text = "Last Name";
+            // 
+            // FirstNameValue
+            // 
+            this.FirstNameValue.Location = new System.Drawing.Point(156, 34);
+            this.FirstNameValue.Name = "FirstNameValue";
+            this.FirstNameValue.Size = new System.Drawing.Size(204, 35);
+            this.FirstNameValue.TabIndex = 24;
+            // 
+            // LBLFirstName
+            // 
+            this.LBLFirstName.AutoSize = true;
+            this.LBLFirstName.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LBLFirstName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
+            this.LBLFirstName.Location = new System.Drawing.Point(6, 31);
+            this.LBLFirstName.Name = "LBLFirstName";
+            this.LBLFirstName.Size = new System.Drawing.Size(144, 37);
+            this.LBLFirstName.TabIndex = 23;
+            this.LBLFirstName.Text = "First Name";
             // 
             // TeamMembersListBox
             // 

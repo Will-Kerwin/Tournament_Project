@@ -18,11 +18,7 @@ namespace TrackerUI
             // Initialize the database connections if jsut one enum means other turned off
             // TrackerLibrary.GlobalConfig.InitializeConnections(DatabaseType.Sql);
             TrackerLibrary.GlobalConfig.InitializeConnections(DatabaseType.TextFile);
-            Application.Run(new CreatePrizeForm());
-
-            // test local move
-            // \/  run this doing the test bit
-            //Application.Run(new TournamentDashboardForm());
+            Application.Run(new CreateTeamForm());
         }
     }
 }
