@@ -47,6 +47,8 @@ namespace TrackerLibrary.DataAccess.TextHelpers
             return File.ReadAllLines(file).ToList();
         }
 
+        /* Convert to models */
+
         /// <summary>
         /// takes text from csv parses and splits string to be put into prize model
         /// </summary>
@@ -106,6 +108,8 @@ namespace TrackerLibrary.DataAccess.TextHelpers
 
             return output;
         }
+
+        /* Save To Files */
 
         public static void SaveToPrizeFile(this List<PrizeModel> models, string fileName)
         {
