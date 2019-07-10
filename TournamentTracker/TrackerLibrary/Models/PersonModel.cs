@@ -22,5 +22,14 @@
         /// Mobile telephone number of the person
         /// </summary>
         public string MobilePhoneNumber { get; set; }
+
+        public string FullName
+        {
+            get
+            {
+                return $"{FirstName} {LastName}";
+            }
+        }
+
     }
 }

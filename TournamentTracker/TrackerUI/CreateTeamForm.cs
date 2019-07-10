@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using TrackerLibrary;
 using TrackerLibrary.Models;
@@ -7,10 +8,31 @@ namespace TrackerUI
 {
     public partial class CreateTeamForm : Form
     {
+
+        private List<PersonModel> avaliableTeamMembers = new List<PersonModel>();
+        private List<PersonModel> selectedTeamMembers= new List<PersonModel>();
+
         // make sure naming is locked in before event creation
         public CreateTeamForm()
         {
             InitializeComponent();
+
+            WireUpLists();
+        }
+
+        private void CreateSampleData()
+        {
+            avaliableTeamMembers.Add(new PersonModel { FirstName = "Will", LastName = "Kerwin" });
+            avaliableTeamMembers.Add(new PersonModel { FirstName = "Jay", LastName = "McDonald" });
+        }
+
+        private void WireUpLists()
+        {
+            SelectTeamMemberDropDown.DataSource = avaliableTeamMembers;
+            SelectTeamMemberDropDown.DisplayMember = "FullName";
+
+            TeamMembersListBox.DataSource = selectedTeamMembers;
+            TeamMembersListBox.DisplayMember = "FullName";
         }
 
         private void BTNCreateMember_Click(object sender, EventArgs e)
