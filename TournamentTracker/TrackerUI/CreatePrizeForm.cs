@@ -37,7 +37,7 @@ namespace TrackerUI
             }
         }
 
-        // TODO set up messages in application
+        // TODO - set up messages in application
         private bool ValidateForm()
         {
             bool output = true;

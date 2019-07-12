@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using TrackerLibrary;
 using TrackerLibrary.Models;
@@ -7,10 +8,41 @@ namespace TrackerUI
 {
     public partial class CreateTeamForm : Form
     {
+
+        private List<PersonModel> availableTeamMembers = GlobalConfig.Connection.GetPerson_All();
+        private List<PersonModel> selectedTeamMembers = new List<PersonModel>();
+
         // make sure naming is locked in before event creation
         public CreateTeamForm()
         {
             InitializeComponent();
+
+            // CreateSampleData();
+
+            WireUpList();
+        }
+
+        private void CreateSampleData()
+        {
+            availableTeamMembers.Add(new PersonModel { FirstName = "Will", LastName = "Kerwin" });
+            availableTeamMembers.Add(new PersonModel { FirstName = "Jay", LastName = "McDonald" });
+
+            selectedTeamMembers.Add(new PersonModel { FirstName = "bob", LastName = "Builder" });
+        }
+
+        private void WireUpList()
+        {
+            // TODO - Look into refresh of data binding
+
+            SelectTeamMemberDropDown.DataSource = null;
+
+            SelectTeamMemberDropDown.DataSource = availableTeamMembers;
+            SelectTeamMemberDropDown.DisplayMember = "FullName";
+
+            TeamMembersListBox.DataSource = null;
+
+            TeamMembersListBox.DataSource = selectedTeamMembers;
+            TeamMembersListBox.DisplayMember = "FullName";
         }
 
         private void BTNCreateMember_Click(object sender, EventArgs e)
@@ -23,7 +55,11 @@ namespace TrackerUI
                 personModel.EmailAddress = EmailValue.Text;
                 personModel.MobilePhoneNumber = MobileValue.Text;
 
-                GlobalConfig.Connection.CreatePerson(personModel);
+                personModel = GlobalConfig.Connection.CreatePerson(personModel);
+
+                selectedTeamMembers.Add(personModel);
+
+                WireUpList();
 
                 FirstNameValue.Text = "";
                 LastNameValue.Text = "";
@@ -60,6 +96,33 @@ namespace TrackerUI
             }
 
             return true;
+        }
+
+        private void BTNAddTeamMember_Click(object sender, EventArgs e)
+        {
+            PersonModel pm = (PersonModel)SelectTeamMemberDropDown.SelectedItem;
+
+            if (pm != null)
+            {
+                availableTeamMembers.Remove(pm);
+                selectedTeamMembers.Add(pm);
+
+                WireUpList(); 
+            }
+
+        }
+
+        private void BTNRemoveSelectedMember_Click(object sender, EventArgs e)
+        {
+            PersonModel pm = (PersonModel)TeamMembersListBox.SelectedItem;
+
+            if (pm != null)
+            {
+                selectedTeamMembers.Remove(pm);
+                availableTeamMembers.Add(pm);
+
+                WireUpList(); 
+            }
         }
     }
 }
