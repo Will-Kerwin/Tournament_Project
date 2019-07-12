@@ -16,8 +16,8 @@ namespace TrackerUI
             Application.SetCompatibleTextRenderingDefault(false);
 
             // Initialize the database connections if jsut one enum means other turned off
-            // TrackerLibrary.GlobalConfig.InitializeConnections(DatabaseType.Sql);
-            TrackerLibrary.GlobalConfig.InitializeConnections(DatabaseType.TextFile);
+            TrackerLibrary.GlobalConfig.InitializeConnections(DatabaseType.Sql);
+            // TrackerLibrary.GlobalConfig.InitializeConnections(DatabaseType.TextFile);
             Application.Run(new CreateTeamForm());
         }
     }
