@@ -1,7 +1,7 @@
-﻿using TrackerLibrary.Models;
-using TrackerLibrary.DataAccess.TextHelpers;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using TrackerLibrary.DataAccess.TextHelpers;
+using TrackerLibrary.Models;
 
 namespace TrackerLibrary.DataAccess
 {
@@ -9,11 +9,12 @@ namespace TrackerLibrary.DataAccess
      * Plan Plan Plan do your plan first fill in code inbetween 
      */
 
-    
+
     public class TextConnector : IDataConnection
     {
         private const string PrizesFile = "PrizeModel.csv";
         private const string PeopleFile = "PersonModel.csv";
+        private const string TeamFile = "TeamModels.csv";
 
         /*Create Models*/
 
@@ -59,6 +60,27 @@ namespace TrackerLibrary.DataAccess
             // * convert the prizes to list<string>
             // * save the list<string> to text file
             prizes.SaveToPrizeFile(PrizesFile);
+
+            return model;
+        }
+
+        public TeamModel CreateTeam(TeamModel model)
+        {
+            List<TeamModel> teams = TeamFile.FullFilePath().LoadFile().ConvertToTeamModels(PeopleFile);
+
+            int currentId = 1;
+
+            // if there is no record make id 1
+            if (teams.Count > 0)
+            {
+                currentId = teams.OrderByDescending(x => x.Id).First().Id + 1;
+            }
+
+            model.Id = currentId;
+
+            teams.Add(model);
+
+            teams.SaveToTeamFile(TeamFile);
 
             return model;
         }
