@@ -120,5 +120,26 @@ namespace TrackerLibrary.DataAccess
 
             return output;
         }
+
+        public List<TeamModel> GetTeam_All()
+        {
+            //TODO - implement on sql server when get home to desktop
+            List<TeamModel> output;
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(database)))
+            {
+                output = connection.Query<TeamModel>("dbo.spTeam_GetAll").ToList();
+
+                // TODO - look to person model see theres a team list need to do sp
+                foreach (TeamModel team in output)
+                {
+                    var p = new DynamicParameters();
+                    p.Add("@TeamId", team.Id);
+
+                    team.TeamMembers = connection.Query<PersonModel>("dbo.spTeamMembers_GetByTeam", p, commandType: CommandType.StoredProcedure).ToList();
+                }
+            }
+
+            return output;
+        }
     }
 }

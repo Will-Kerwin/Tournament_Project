@@ -1,5 +1,8 @@
-﻿using System.Configuration;
+﻿using System;
+using System.Collections.Generic;
+using System.Configuration;
 using TrackerLibrary.DataAccess;
+using TrackerLibrary.Models;
 
 namespace TrackerLibrary
 {
@@ -7,6 +10,7 @@ namespace TrackerLibrary
     {
         // plan now vs plan later = plan now clean code
         public static IDataConnection Connection { get; private set; }
+
         public static void InitializeConnections(DatabaseType db)
         {
             /* switch tab tab then in the () type db it fills for you left as is for now cuz c# limited
